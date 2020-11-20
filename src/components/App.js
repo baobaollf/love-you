@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Img from "../src/Image/IMG_0046.jpg"
+import '../styles/App.css';
+import Img from "../Image/IMG_0046.jpg"
 
 function App() {
   return (
@@ -12,7 +11,10 @@ function App() {
 	  <h5>
 	  	Baobao
 	  </h5>
-        <img className="image" src={Img}/>
+        <h6>
+            06/10/2020
+        </h6>
+        <img className="image" src={Img} alt={Img}/>
     </div>
   );
 }
