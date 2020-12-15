@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Layout, Menu } from 'antd';
+import React, {Component} from 'react'
+import {Layout, Menu} from 'antd';
 import logo from "../../Image/logoNoName.png"
 import {
     BrowserRouter as Router,
@@ -11,8 +11,9 @@ import {
 import MainPage from "./MainPage"
 import Explore from "./Explore"
 import AboutUs from "./AboutUs"
+import AlphaGo from "../projects/AlphaGo";
 
-const { Header, Footer } = Layout;
+const {Header, Footer} = Layout;
 
 export default class PageController extends Component {
 
@@ -21,10 +22,10 @@ export default class PageController extends Component {
             <Router>
                 <Layout className="layout">
                     <Header>
-                        <img className="mainPageLogo" src={logo} alt={logo} />
+                        <img className="mainPageLogo" src={logo} alt={logo}/>
                         <Menu theme="dark"
-                            mode="horizontal"
-                            defaultSelectedKeys={['/']}>
+                              mode="horizontal"
+                              defaultSelectedKeys={['/']}>
                             <Menu.Item key="/">
                                 <Link to="/">Home</Link>
                             </Menu.Item>
@@ -38,22 +39,25 @@ export default class PageController extends Component {
                     </Header>
                     <Switch>
                         <Route exact path="/">
-                            <MainPage />
+                            <MainPage/>
                         </Route>
                         <Route path="/about">
-                            <AboutUs />
+                            <AboutUs/>
                         </Route>
                         <Route path="/explore">
-                            <Explore />
+                            <Explore/>
                         </Route>
+                        {/*<Route path="/explore/alphaGo">*/}
+                        {/*    <AlphaGo/>*/}
+                        {/*</Route>*/}
                     </Switch>
-                    <Footer style={{ textAlign: 'center' }}>
+                    <Footer style={{textAlign: 'center'}}>
                         <h5>
                             hjwllf@gmail.com
-                    </h5>
+                        </h5>
                         <h5>
                             From the moon and back
-                    </h5>
+                        </h5>
                     </Footer>
                 </Layout>
             </Router>
