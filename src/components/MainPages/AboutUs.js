@@ -5,9 +5,7 @@ const { Content } = Layout;
 export default class AboutUs extends Component {
     render() {
         return (
-            <Content style={{
-                padding: '10px 50px'
-            }}>
+            <Content className="content">
                 <div className="site-layout-content">
                     <div>
                         About us

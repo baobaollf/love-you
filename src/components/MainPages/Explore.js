@@ -22,9 +22,7 @@ function Explore() {
 
     return (
         <Router>
-            <Content style={{
-                padding: '10px 50px'
-            }}>
+            <Content className="content">
                 <div className="site-layout-content">
                     <h1>Here is a list of my projects </h1>
                     <Link to={`${location}/alphaGo`}>
