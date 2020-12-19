@@ -6,7 +6,6 @@ import {
     Switch,
     Route,
     Link,
-    Redirect
 } from "react-router-dom";
 import MainPage from "./MainPage"
 import Explore from "./Explore"
@@ -53,7 +52,7 @@ export default class PageController extends Component {
                     </Switch>
                     <Footer style={{textAlign: 'center'}}>
                         <h5>
-                            hjwllf@gmail.com
+                            contact@baobao.digital
                         </h5>
                         <h5>
                             From the moon and back

@@ -20,7 +20,7 @@ export default class MainPage extends Component {
     render() {
         return (
             <Content style={{
-                padding: '0 50px'
+                padding: '10px 50px'
             }}>
                 <div className="site-layout-content">
                     <div className="App">
