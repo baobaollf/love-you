@@ -1,51 +1,71 @@
-import React, {Component} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import {Card, Layout} from 'antd';
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useLocation,
-    useRouteMatch,
-    useHistory,
-    Redirect
 } from "react-router-dom";
 
 
-import AlphaGo from "../projects/AlphaGo";
-import Img from "../../Image/IMG_0046.jpg";
+import FirestoreContext from "../FirestoreContext";
 
 const {Meta} = Card;
-const { Content } = Layout;
+const {Content} = Layout;
+
 function Explore() {
-    let location = useLocation().pathname;
+    const db = useContext(FirestoreContext);
+    const [places, setPlaces] = useState([]);
+
+    // load "places information from database"
+    useEffect(() => {
+        db.collection("places").get().then(querySnapshot => {
+            const data = querySnapshot.docs.map(doc => doc.data());
+            // console.log(data);
+            setPlaces(data);
+        });
+    }, [places.length, db]);
+
+    // compose description
+    function cardDescription(value) {
+        return <div>
+            <h4>
+                {value.description}
+            </h4>
+            <h5>
+                {value.location}
+            </h5>
+        </div>
+    }
+
 
     return (
+
         <Router>
             <Content className="content">
                 <div className="site-layout-content">
-                    <h1>Here is a list of my projects </h1>
-                    <Link to={`${location}/alphaGo`}>
-                        <Card
-                            hoverable
-                            style={{width: 240}}
-                            cover={<img alt="img"
-                                        src="https://camo.githubusercontent.com/dc2ac394810a351336de8b8e8976c6f347c4adedc31769a454237b0d1324f886/68747470733a2f2f692e6962622e636f2f783839794b4b332f7061737465642d696d6167652d302e706e67"
-                            />}
-                        >
-                            <Meta title="AlphaGo" description="A React based web application"/>
-                        </Card>
-                    </Link>
+                    <h1>Let's go places</h1>
+                    <div className="site-layout-content-card">
+                        {places.map((value, index) => {
+                            return <Card
+                                hoverable
+                                style={{width: 240, marginLeft: 5}}
+                                cover={<img alt="img"
+                                            className="card-image"
+                                            src={value.image}
+
+                                />}
+                                key={index}
+                            >
+                                <Meta title={value.name} description={cardDescription(value)}/>
+                            </Card>
+                        })}
+                    </div>
+
                 </div>
-                <Switch>
-                    <Route path={`${location}/alphaGo`}>
-                        <AlphaGo/>
-                    </Route>
-                </Switch>
+
             </Content>
 
         </Router>
     );
+
 
 }
 

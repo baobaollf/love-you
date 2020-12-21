@@ -6,7 +6,7 @@ import { Layout, Menu } from 'antd';
 
 const { Content } = Layout;
 
-export default class MainPage extends Component {
+export default class Home extends Component {
 
     constructor() {
         super();

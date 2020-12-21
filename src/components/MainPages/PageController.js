@@ -7,16 +7,20 @@ import {
     Route,
     Link,
 } from "react-router-dom";
-import MainPage from "./MainPage"
+import Home from "./Home"
 import Explore from "./Explore"
-import AboutUs from "./AboutUs"
-import AlphaGo from "../projects/AlphaGo";
+import Message from "./Message"
+import Prom from "../places/Prom";
 
 const {Header, Footer} = Layout;
 
 export default class PageController extends Component {
 
     render() {
+        function getDefault() {
+            return window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+        }
+
         return (
             <Router>
                 <Layout className="layout">
@@ -24,31 +28,28 @@ export default class PageController extends Component {
                         <img className="mainPageLogo" src={logo} alt={logo}/>
                         <Menu theme="dark"
                               mode="horizontal"
-                              defaultSelectedKeys={['/']}>
+                              defaultSelectedKeys={[`/${getDefault()}`]}>
                             <Menu.Item key="/">
                                 <Link to="/">Home</Link>
                             </Menu.Item>
                             <Menu.Item key="/explore">
                                 <Link to="/explore">Explore</Link>
                             </Menu.Item>
-                            <Menu.Item key="/about">
-                                <Link to="/about">About</Link>
+                            <Menu.Item key="/message">
+                                <Link to="/message">Message</Link>
                             </Menu.Item>
                         </Menu>
                     </Header>
                     <Switch>
                         <Route exact path="/">
-                            <MainPage/>
+                            <Home/>
                         </Route>
-                        <Route path="/about">
-                            <AboutUs/>
+                        <Route path="/message">
+                            <Message/>
                         </Route>
                         <Route path="/explore">
                             <Explore/>
                         </Route>
-                        {/*<Route path="/explore/alphaGo">*/}
-                        {/*    <AlphaGo/>*/}
-                        {/*</Route>*/}
                     </Switch>
                     <Footer style={{textAlign: 'center'}}>
                         <h5>
