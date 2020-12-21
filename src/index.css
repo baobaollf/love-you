@@ -21,7 +21,7 @@ code {
 .site-layout-content-card{
     display: flex;
     flex-direction: row;
-
+    flex-wrap: wrap;
 }
 
 .mainPageLogo {
